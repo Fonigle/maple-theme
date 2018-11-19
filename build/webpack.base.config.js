@@ -10,11 +10,9 @@ const mode = process.env.MODE;
 const styleLoader =
     mode === "production" ? MiniCssExtractPlugin.loader : "style-loader";
 
-
 module.exports = {
     output: {
         publicPath: "/",
-        libraryTarget: 'umd'
     },
     resolve: {
         extensions: [".js", ".vue", ".json", ".ts"],
@@ -106,24 +104,21 @@ module.exports = {
                     priority: -20,
                     reuseExistingChunk: true
                 },
-                vendors: {
-                    name: "vendors/library",
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                "vendors/vue-bucket": {
-                    name: "vendors/vue-bucket",
-                    test: /[\\/]node_modules[\\/]vue/,
-                    priority: -9
-                }
+                // vendors: {
+                //     name: "vendors/library",
+                //     test: /[\\/]node_modules[\\/]/,
+                //     priority: -10
+                // },
+                // "vendors/vue-bucket": {
+                //     name: "vendors/vue-bucket",
+                //     test: /[\\/]node_modules[\\/]vue/,
+                //     priority: -9
+                // }
             }
         },
         runtimeChunk: {
             name: "vendors/manifest"
         }
-    },
-    externals: {
-        vue: 'vue'
     },
     performance: {
         hints: false

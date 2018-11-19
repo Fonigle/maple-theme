@@ -17,9 +17,9 @@ module.exports = merge(baseCfg, {
     output: {
         path: path.resolve('dist'),
         filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js'
+        chunkFilename: '[name].[contenthash].js',
+        libraryTarget: 'umd'
     },
-
     devtool: "cheap-module-map",
     plugins: [
         new CleanWebpackPlugin(['dist'], {
@@ -29,6 +29,9 @@ module.exports = merge(baseCfg, {
             filename: '[name].[contenthash].css'
         }),
     ],
+    externals: {
+        vue: 'vue'
+    },
     optimization: {
         minimizer: [
             new UglifyJsPlugin({

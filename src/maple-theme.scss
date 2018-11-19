@@ -1,0 +1,64 @@
+@import './-md-color.scss';
+
+$mp-themes-custom:() !default;
+
+$mp-themes-default:(default:(main:$md-color-blue, accent:$md-color-orange-a400));
+$mp-themes: map-merge($mp-themes-default, $mp-themes-custom);
+
+// ====================================================================
+
+// ====================================================================
+$brightnesses: light dark;
+//$colors: #{'white'} primary secondary thirdly success warn error main main-deep main-pale accent accent-deep accent-pale;
+
+$colors:main accent;
+
+$backgrounds: panel component success warn error main main-deep main-pale accent accent-deep accent-pale selected-pale selected cloak 'transparent';
+$divide-positions: all top right bottom left;
+$divide-styles: solid dashed dotted;
+$levels: 1 2 3 4 5;
+// =====================================================================
+
+@function handleColor($color, $brightness) {
+    @if ($brightness=='light') {
+        @return $color;
+    }
+
+    @else if ($brightness=='dark') {
+        @return darken($color, 15%);
+    }
+}
+
+//=======================================================================
+
+@for $i-brightness from 1 through length($brightnesses) {
+    $brightness: nth($list:$brightnesses, $n:$i-brightness);
+
+    .mp-#{$brightness} {
+        @for $i-theme from 1 through length(map-keys($mp-themes)) {
+            $theme: nth($list:map-keys($mp-themes), $n:$i-theme);
+
+            .mp-theme-#{$theme} {
+                @for $i-color from 1 through length($colors) {
+
+                    $color: nth($list:$colors, $n:$i-color);
+
+                    $theme-colors: map-get($map: $mp-themes, $key:$theme);
+                    $color-now: map-get($map: $theme-colors, $key:$color);
+
+                    .mp-theme-color-#{$color} {
+                        //color: handleColor($color-now, $brightness);
+
+                        @if ($brightness=='light') {
+                            color: $color-now;
+                        }
+
+                        @else {
+                            color: darken($color-now, 10%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
