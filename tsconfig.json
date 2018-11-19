@@ -1,0 +1,27 @@
+{
+    "compileOnSave": false,
+    "include": ["@declaration", "demo", "src"],
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "target": "es5",
+
+        "strict": true,
+
+        "module": "esnext",
+        "moduleResolution": "node",
+
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+
+        "allowJs": true,
+        "resolveJsonModule": true,
+
+        "lib": ["dom", "es5", "es6", "es7", "esnext", "es2015.promise"],
+
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["./src/*"],
+            "mixins/*": ["./src/mixins/*"]
+        },
+    }
+}
