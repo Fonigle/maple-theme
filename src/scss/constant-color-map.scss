@@ -1,0 +1,23 @@
+$const-color-light:(
+/**/
+whiteness: #fff,
+primary: rgba(#000, .87),
+secondary: rgba(#000, .54),
+thirdly:rgba(#000, .38),
+success:$success,
+warning:$warning,
+error:$error
+/**/
+);
+
+$const-color-dark: (
+/**/
+whiteness: rgba(#fff, .95),
+primary:rgba(#fff, 1),
+secondary: rgba(#fff, .7),
+thirdly:rgba(#fff, .3),
+success:darken($success, $darken-ratio),
+warning:darken($warning, $darken-ratio),
+error:darken($error, $darken-ratio),
+/**/
+)

@@ -1,0 +1,54 @@
+@function calcColor($color-type, $brightness, $themepack:'') {
+
+    @if(index($colors-static, $color-type) !=null) {
+
+        @if($brightness=='light') {
+            @return map-get($map: $const-color-light, $key: $color-type);
+        }
+
+        @else if($brightness=='dark') {
+            @return map-get($map: $const-color-dark, $key: $color-type);
+        }
+    }
+
+    @else {
+        $themepack-colors: map-get($map: $mp-themepacks, $key: $themepack);
+
+        $main: map-get($map:$themepack-colors, $key:'main');
+        $accent: map-get($map:$themepack-colors, $key:'accent');
+
+        $pale-ratio: 13.72549%;
+        $deep-ratio: 12.35294%;
+
+        $colors-light: (
+            /**/
+            main:$main, //$main,
+            main-pale: lighten($color:$main, $amount:$pale-ratio),
+            main-deep: darken($color:$main, $amount:$deep-ratio),
+            accent: $accent,
+            accent-pale: lighten($color:$accent, $amount:$pale-ratio),
+            accent-deep: darken($color:$accent, $amount:$deep-ratio)
+            /**/
+            );
+
+        $colors-dark: (
+            /**/
+            main: darken($color:$main, $amount:$darken-ratio),
+            main-pale: lighten($color:$main, $amount:$pale-ratio - $darken-ratio),
+            main-deep: darken($color:$main, $amount:$deep-ratio + $darken-ratio),
+            accent: darken($color:$accent, $amount:$darken-ratio),
+            accent-pale: lighten($color:$accent, $amount:$pale-ratio - $darken-ratio),
+            accent-deep: darken($color:$accent, $amount:$deep-ratio + $darken-ratio),
+            /**/
+            );
+
+        @if ($brightness=='light') {
+            @return map-get($map: $colors-light, $key: $color-type);
+        }
+
+        @else {
+            @return map-get($map: $colors-dark, $key: $color-type);
+        }
+
+    }
+}

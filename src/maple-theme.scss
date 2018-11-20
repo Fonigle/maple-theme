@@ -1,64 +1,84 @@
-@import './-md-color.scss';
+/*!
+ * maple-theme.scss
+ * Author: Fonigle <www.fonigle.com>
+ * Date: 2018/11/20
+ * HomePage: theme.maple-ui.com
+ */
+@import './scss/variables.scss';
+@import './scss/constant-type-list.scss';
+@import './scss/constant-color-map.scss';
 
-$mp-themes-custom:() !default;
+@import './scss/functions.scss';
 
-$mp-themes-default:(default:(main:$md-color-blue, accent:$md-color-orange-a400));
-$mp-themes: map-merge($mp-themes-default, $mp-themes-custom);
 
 // ====================================================================
 
-// ====================================================================
-$brightnesses: light dark;
-//$colors: #{'white'} primary secondary thirdly success warn error main main-deep main-pale accent accent-deep accent-pale;
 
-$colors:main accent;
+// $colors:main accent;
 
-$backgrounds: panel component success warn error main main-deep main-pale accent accent-deep accent-pale selected-pale selected cloak 'transparent';
 $divide-positions: all top right bottom left;
 $divide-styles: solid dashed dotted;
 $levels: 1 2 3 4 5;
 // =====================================================================
 
-@function handleColor($color, $brightness) {
-    @if ($brightness=='light') {
-        @return $color;
-    }
-
-    @else if ($brightness=='dark') {
-        @return darken($color, 15%);
-    }
-}
-
-//=======================================================================
-
 @for $i-brightness from 1 through length($brightnesses) {
     $brightness: nth($list:$brightnesses, $n:$i-brightness);
 
     .mp-#{$brightness} {
-        @for $i-theme from 1 through length(map-keys($mp-themes)) {
-            $theme: nth($list:map-keys($mp-themes), $n:$i-theme);
 
-            .mp-theme-#{$theme} {
-                @for $i-color from 1 through length($colors) {
+        // static colors
+        @for $i-color from 1 through length($colors-static) {
 
-                    $color: nth($list:$colors, $n:$i-color);
+            $color-type-static: nth($list:$colors-static, $n:$i-color);
 
-                    $theme-colors: map-get($map: $mp-themes, $key:$theme);
-                    $color-now: map-get($map: $theme-colors, $key:$color);
+            .mp-theme-color-#{$color-type-static} {
+                color: calcColor($color-type-static, $brightness);
+            }
 
-                    .mp-theme-color-#{$color} {
-                        //color: handleColor($color-now, $brightness);
+            .mp-theme-color-hover-#{$color-type-static} {
+                &:hover {
+                    color: calcColor($color-type-static, $brightness);
+                }
+            }
 
-                        @if ($brightness=='light') {
-                            color: $color-now;
-                        }
-
-                        @else {
-                            color: darken($color-now, 10%);
-                        }
-                    }
+            .mp-theme-color-active-#{$color-type-static} {
+                &.active {
+                    color: calcColor($color-type-static, $brightness);
                 }
             }
         }
+
+        // themepack colors
+        @for $i-themepack from 1 through length(map-keys($mp-themepacks)) {
+
+            //default or other custom
+            $themepack: nth($list:map-keys($mp-themepacks), $n:$i-themepack);
+
+            &.mp-theme-#{$themepack} {
+                @for $i-color from 1 through length($colors-themepack) {
+                    $color-type-themepack: nth($list:$colors-themepack, $n:$i-color);
+                    $color-now: calcColor($color-type-themepack, $brightness, $themepack);
+
+                    .mp-theme-color-#{$color-type-themepack} {
+                        color: $color-now;
+                    }
+
+                    .mp-theme-color-hover-#{$color-type-themepack} {
+                        &:hover {
+                            color: $color-now;
+                        }
+                    }
+
+                    .mp-theme-color-active-#{$color-type-themepack} {
+                        &.active {
+                            color: $color-now;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        //static background-colors
     }
 }

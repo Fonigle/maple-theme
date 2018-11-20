@@ -16,8 +16,7 @@ module.exports = merge(baseCfg, {
     },
     output: {
         path: path.resolve('dist'),
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js',
+        filename: '[name].js',
         libraryTarget: 'umd'
     },
     devtool: "cheap-module-map",
@@ -26,7 +25,7 @@ module.exports = merge(baseCfg, {
             root: path.resolve('./')
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            filename: '[name].css'
         }),
     ],
     externals: {

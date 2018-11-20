@@ -8,7 +8,7 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
     switch (arg) {
         case 'color': {
             let color = '';
-            (value === 0 || value === 'white') && (color = 'white');
+            (value === 0 || value === 'whiteness') && (color = 'whiteness');
             (value === 1 || value === 'primary' || value === undefined) && (color = 'primary');
             (value === 2 || value === 'secondary') && (color = 'secondary');
             (value === 3 || value === 'thirdly') && (color = 'thirdly');
@@ -22,7 +22,7 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
             (value === 22 || value === 'accent-deep') && (color = 'accent-deep');
 
             (value === 200 || value === 'success') && (color = 'success');
-            (value === 300 || value === 'warn') && (color = 'warn');
+            (value === 300 || value === 'warning') && (color = 'warning');
             (value === 400 || value === 'error') && (color = 'error');
 
             let pseudo = '';
@@ -54,7 +54,7 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
             (value === 40 || value === 'cloak') && (backgroundColor = 'cloak');
 
             (value === 200 || value === 'success') && (backgroundColor = 'success');
-            (value === 300 || value === 'warn') && (backgroundColor = 'warn');
+            (value === 300 || value === 'warning') && (backgroundColor = 'warning');
             (value === 400 || value === 'error') && (backgroundColor = 'error');
 
             let pseudo = '';

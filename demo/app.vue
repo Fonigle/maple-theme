@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <div class="test-area"
-             v-theme:color="2">
+             v-theme:color="11">
             11111
         </div>
     </div>
