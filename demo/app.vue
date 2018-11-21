@@ -3,7 +3,11 @@
         <div class="test-area"
              v-theme:color="0"
              v-theme:background="12">
-            11111
+            <ul>
+                <li v-for="i in 6"
+                    :key="i"
+                    v-theme:border>{{i}}</li>
+            </ul>
         </div>
     </div>
 </template>
@@ -22,6 +26,12 @@
         .test-area {
             width: 1200px;
             height: 860px;
+            ul {
+                list-style: none;
+                li {
+                    line-height: 48px;
+                }
+            }
         }
     }
 </style>

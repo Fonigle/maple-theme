@@ -63,6 +63,16 @@
 
     @else {
         $themepack-colors-map: calcThemepackColorsMap($brightness, $themepack);
-        @return map-get($map: $themepack-colors-map, $key: $color-type);
+        @return map-get($map: $themepack-colors-map, $key: $background-type);
+    }
+}
+
+@function calcBorderColor($border-color-type, $brightness, $themepack:'') {
+    @if($brightness=='light') {
+        @return map-get($map: $const-border-light, $key: $border-color-type);
+    }
+
+    @else if($brightness=='dark') {
+        @return map-get($map: $const-border-dark, $key: $border-color-type);
     }
 }

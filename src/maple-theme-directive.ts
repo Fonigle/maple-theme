@@ -5,6 +5,8 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
     const value = binding.value;
     const modifiers = binding.modifiers;
 
+    const modifiersKeys = Object.keys(modifiers);
+
     switch (arg) {
         case 'color': {
             let color = '';
@@ -26,8 +28,8 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
             (value === 400 || value === 'error') && (color = 'error');
 
             let pseudo = '';
-            Object.keys(modifiers).indexOf('hover') >= 0 && (pseudo = 'hover-');
-            Object.keys(modifiers).indexOf('active') >= 0 && (pseudo = 'active-');
+            modifiersKeys.indexOf('hover') >= 0 && (pseudo = 'hover-');
+            modifiersKeys.indexOf('active') >= 0 && (pseudo = 'active-');
 
             el.classList.add(`mp-theme-color-${pseudo}${color}`);
             break;
@@ -58,11 +60,40 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
             (value === 400 || value === 'error') && (backgroundColor = 'error');
 
             let pseudo = '';
-            Object.keys(modifiers).indexOf('hover') >= 0 && (pseudo = 'hover-');
-            Object.keys(modifiers).indexOf('active') >= 0 && (pseudo = 'active-');
+            modifiersKeys.indexOf('hover') >= 0 && (pseudo = 'hover-');
+            modifiersKeys.indexOf('active') >= 0 && (pseudo = 'active-');
 
             el.classList.add(`mp-theme-background-${pseudo}${backgroundColor}`);
             break;
+        }
+
+        case 'border': {
+            let positions = [];
+
+            if (modifiersKeys.indexOf('all') >= 0) {
+                positions.push('all');
+            } else {
+                let positionFlag = false;
+                for (let item of ['top', 'right', 'bottom', 'left']) {
+                    if (modifiersKeys.indexOf(item) >= 0) {
+                        positions.push(item);
+                        positionFlag = true;
+                    }
+                }
+                //若mod中未标记位置，则默认为下边框
+                !positionFlag && positions.push('bottom');
+            }
+
+            let notLast = '';
+            modifiersKeys.indexOf('not-last') >= 0 && (notLast = '-not-last');
+
+            let borderType = 'solid';
+            modifiersKeys.indexOf('dashed') >= 0 && (borderType = 'dashed');
+            modifiersKeys.indexOf('dotted') >= 0 && (borderType = 'dotted');
+
+            for (let position of positions) {
+                el.classList.add(`mp-theme-border-default-${position}-${borderType}${notLast}`);
+            }
         }
     }
 };

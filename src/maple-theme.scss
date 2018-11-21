@@ -12,9 +12,6 @@
 
 
 // ====================================================================
-
-$divide-positions: all top right bottom left;
-$divide-styles: solid dashed dotted;
 $levels: 1 2 3 4 5;
 // =====================================================================
 
@@ -93,12 +90,53 @@ $levels: 1 2 3 4 5;
             &.mp-theme-#{$themepack} {
                 @for $i-background-themepack from 1 through length($backgrounds-themepack) {
                     $background-type-themepack: nth($list:$colors-themepack, $n:$i-background-themepack);
-                    $background-now: calcColor($background-type-themepack, $brightness, $themepack);
+                    $background-now: calcBackground($background-type-themepack, $brightness, $themepack);
 
                     .mp-theme-background-#{$background-type-themepack} {
                         background-color: $background-now;
                     }
 
+                }
+            }
+        }
+
+        @for $i-border-position from 1 through length($border-positions) {
+            $position: nth($border-positions, $i-border-position);
+
+            @for $i-border-style from 1 through length($border-styles) {
+                $style: nth($border-styles, $i-border-style);
+                $border-color-type: default;
+
+                .mp-theme-border-#{$border-color-type}-#{$position}-#{$style} {
+
+                    @if($position=='all') {
+                        border-width: 1px;
+                        border-style: $style;
+                        border-color: calcBorderColor($border-color-type, $brightness)
+                    }
+
+                    @else {
+                        border-#{$position}-width: 1px;
+                        border-#{$position}-style: $style;
+                        border-#{$position}-color: calcBorderColor($border-color-type, $brightness);
+                    }
+                }
+
+
+                .mp-theme-border-#{$border-color-type}-#{$position}-#{$style}-not-last {
+                    &:not(:last-child) {
+                        @if($position=='all') {
+                            border-width: 1px;
+                            border-style: $style;
+                            border-color: calcBorderColor($border-color-type, $brightness)
+                        }
+
+                        @else {
+                            border-#{$position}-width: 1px;
+                            border-#{$position}-style: $style;
+                            border-#{$position}-color: calcBorderColor($border-color-type, $brightness);
+                        }
+                    }
                 }
             }
         }
