@@ -30,7 +30,7 @@ $levels: 1 2 3 4 5;
             }
 
             .mp-theme-color-hover-#{$color-type-static} {
-                &:hover {
+                &:hover:not(.active) {
                     color: calcColor($color-type-static, $brightness);
                 }
             }
@@ -58,7 +58,7 @@ $levels: 1 2 3 4 5;
                     }
 
                     .mp-theme-color-hover-#{$color-type-themepack} {
-                        &:hover {
+                        &:hover:not(.active) {
                             color: $color-now;
                         }
                     }
@@ -74,16 +74,28 @@ $levels: 1 2 3 4 5;
         }
 
         // static background-colors
-
         @for $i-background-static from 1 through length($backgrounds-static) {
-
             $background-type-static: nth($list:$backgrounds-static, $n:$i-background-static);
+            $background-now: calcBackground($background-type-static, $brightness);
 
             .mp-theme-background-#{$background-type-static} {
-                color: calcBackground($background-type-static, $brightness);
+                background-color: $background-now;
+            }
+
+            .mp-theme-background-hover-#{$background-type-static} {
+                &:hover:not(.active) {
+                    background-color: $background-now;
+                }
+            }
+
+            .mp-theme-background-active-#{$background-type-static} {
+                &.active {
+                    background-color: $background-now;
+                }
             }
         }
 
+        // themepack background-colors
         @for $i-themepack from 1 through length(map-keys($mp-themepacks)) {
             $themepack: nth($list:map-keys($mp-themepacks), $n:$i-themepack);
 
@@ -96,10 +108,22 @@ $levels: 1 2 3 4 5;
                         background-color: $background-now;
                     }
 
+                    .mp-theme-background-hover-#{$background-type-themepack} {
+                        &:hover:not(.active) {
+                            background-color: $background-now;
+                        }
+                    }
+
+                    .mp-theme-background-active-#{$background-type-themepack} {
+                        &.active {
+                            background-color: $background-now;
+                        }
+                    }
                 }
             }
         }
 
+        //border
         @for $i-border-position from 1 through length($border-positions) {
             $position: nth($border-positions, $i-border-position);
 
@@ -122,7 +146,6 @@ $levels: 1 2 3 4 5;
                     }
                 }
 
-
                 .mp-theme-border-#{$border-color-type}-#{$position}-#{$style}-not-last {
                     &:not(:last-child) {
                         @if($position=='all') {
@@ -138,6 +161,15 @@ $levels: 1 2 3 4 5;
                         }
                     }
                 }
+            }
+        }
+
+        // shadow
+        @for $i-shadow-level from 1 through length($shadow-levels) {
+            $shadow-level: nth($shadow-levels, $i-shadow-level);
+
+            .mp-theme-shadow-#{$shadow-level} {
+                box-shadow: calcShadow($shadow-level, $brightness);
             }
         }
     }

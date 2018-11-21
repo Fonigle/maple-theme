@@ -60,4 +60,24 @@ $const-border-dark: (
 /**/
 default: rgba(#fff, 0.12),
 /**/
-)
+);
+
+$const-shadow-light:(
+/**/
+shadow-1: 0px 2px 2px rgba(#000, 0.22),
+shadow-2: 0px 2px 5px rgba(#000, 0.21),
+shadow-3: 0px 2px 8px rgba(#000, 0.20),
+shadow-4: 0px 2px 11px rgba(#000, 0.19),
+shadow-5: 0px 2px 14px rgba(#000, 0.18)
+/**/
+);
+
+$const-shadow-dark:(
+/**/
+shadow-1: 0px 2px 4px rgba(#000, 0.58),
+shadow-2: 0px 2px 7px rgba(#000, 0.56),
+shadow-3: 0px 2px 10px rgba(#000, 0.54),
+shadow-4: 0px 2px 13px rgba(#000, 0.52),
+shadow-5: 0px 2px 16px rgba(#000, 0.5)
+/**/
+);

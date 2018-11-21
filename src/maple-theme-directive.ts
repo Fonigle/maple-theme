@@ -94,6 +94,28 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
             for (let position of positions) {
                 el.classList.add(`mp-theme-border-default-${position}-${borderType}${notLast}`);
             }
+
+            break;
+        }
+
+        case 'shadow': {
+            let level = 0;
+            for (let item of [1, 2, 3, 4, 5]) {
+                value === item && (level = value);
+            }
+            if (value === undefined) {
+                level = 1;
+            }
+
+            let pseudo = '';
+            Object.keys(modifiers).indexOf('hover') >= 0 && (pseudo = 'hover-');
+            Object.keys(modifiers).indexOf('active') >= 0 && (pseudo = 'active-');
+
+            let filter = '';
+            Object.keys(modifiers).indexOf('filter') >= 0 && (filter = '-filter');
+
+            level && el.classList.add(`mp-theme-shadow-${pseudo}${level}${filter}`);
+            break;
         }
     }
 };

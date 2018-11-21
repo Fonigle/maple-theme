@@ -2,7 +2,8 @@
     <div class="app">
         <div class="test-area"
              v-theme:color="0"
-             v-theme:background="12">
+             v-theme:background="12"
+             v-theme:shadow>
             <ul>
                 <li v-for="i in 6"
                     :key="i"
