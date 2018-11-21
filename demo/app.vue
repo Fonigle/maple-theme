@@ -1,7 +1,8 @@
 <template>
     <div class="app">
         <div class="test-area"
-             v-theme:color="11">
+             v-theme:color="0"
+             v-theme:background="12">
             11111
         </div>
     </div>

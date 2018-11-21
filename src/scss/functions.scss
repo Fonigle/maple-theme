@@ -1,3 +1,33 @@
+@function calcThemepackColorsMap($brightness, $themepack) {
+    $themepack-colors: map-get($map:$mp-themepacks, $key:$themepack);
+
+    $main: map-get($map:$themepack-colors, $key:'main');
+    $accent: map-get($map:$themepack-colors, $key:'accent');
+
+    $pale-ratio: 13.72549%;
+    $deep-ratio: 12.35294%;
+
+    @if($brightness=='light') {
+        @return (main: $main,
+            main-pale: lighten($color:$main, $amount:$pale-ratio),
+            main-deep: darken($color:$main, $amount:$deep-ratio),
+            accent: $accent,
+            accent-pale: lighten($color:$accent, $amount:$pale-ratio),
+            accent-deep: darken($color:$accent, $amount:$deep-ratio),
+            );
+    }
+
+    @else if ($brightness=='dark') {
+        @return (main: darken($color:$main, $amount:$darken-ratio),
+            main-pale: lighten($color:$main, $amount:$pale-ratio - $darken-ratio),
+            main-deep: darken($color:$main, $amount:$deep-ratio + $darken-ratio),
+            accent: darken($color:$accent, $amount:$darken-ratio),
+            accent-pale: lighten($color:$accent, $amount:$pale-ratio - $darken-ratio),
+            accent-deep: darken($color:$accent, $amount:$deep-ratio + $darken-ratio),
+            );
+    }
+}
+
 @function calcColor($color-type, $brightness, $themepack:'') {
 
     @if(index($colors-static, $color-type) !=null) {
@@ -12,43 +42,27 @@
     }
 
     @else {
-        $themepack-colors: map-get($map: $mp-themepacks, $key: $themepack);
+        $themepack-colors-map: calcThemepackColorsMap($brightness, $themepack);
+        @return map-get($map: $themepack-colors-map, $key: $color-type);
 
-        $main: map-get($map:$themepack-colors, $key:'main');
-        $accent: map-get($map:$themepack-colors, $key:'accent');
+    }
+}
 
-        $pale-ratio: 13.72549%;
-        $deep-ratio: 12.35294%;
+@function calcBackground($background-type, $brightness, $themepack:'') {
 
-        $colors-light: (
-            /**/
-            main:$main, //$main,
-            main-pale: lighten($color:$main, $amount:$pale-ratio),
-            main-deep: darken($color:$main, $amount:$deep-ratio),
-            accent: $accent,
-            accent-pale: lighten($color:$accent, $amount:$pale-ratio),
-            accent-deep: darken($color:$accent, $amount:$deep-ratio)
-            /**/
-            );
+    @if(index($backgrounds-static, $background-type) !=null) {
 
-        $colors-dark: (
-            /**/
-            main: darken($color:$main, $amount:$darken-ratio),
-            main-pale: lighten($color:$main, $amount:$pale-ratio - $darken-ratio),
-            main-deep: darken($color:$main, $amount:$deep-ratio + $darken-ratio),
-            accent: darken($color:$accent, $amount:$darken-ratio),
-            accent-pale: lighten($color:$accent, $amount:$pale-ratio - $darken-ratio),
-            accent-deep: darken($color:$accent, $amount:$deep-ratio + $darken-ratio),
-            /**/
-            );
-
-        @if ($brightness=='light') {
-            @return map-get($map: $colors-light, $key: $color-type);
+        @if($brightness=='light') {
+            @return map-get($map: $const-background-light, $key: $background-type);
         }
 
-        @else {
-            @return map-get($map: $colors-dark, $key: $color-type);
+        @else if($brightness=='dark') {
+            @return map-get($map: $const-background-dark, $key: $background-type);
         }
+    }
 
+    @else {
+        $themepack-colors-map: calcThemepackColorsMap($brightness, $themepack);
+        @return map-get($map: $themepack-colors-map, $key: $color-type);
     }
 }

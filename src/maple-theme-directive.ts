@@ -40,13 +40,13 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
             (value === 0 || value === 'panel') && (backgroundColor = 'panel');
             (value === 1 || value === 'component' || value === undefined) && (backgroundColor = 'component');
 
-            (value === 10 || value === 'main-pale') && (backgroundColor = 'main-pale');
-            (value === 11 || value === 'main') && (backgroundColor = 'main');
-            (value === 12 || value === 'main-deep') && (backgroundColor = 'main-deep');
+            (value === 12 || value === 'main-pale') && (backgroundColor = 'main-pale');
+            (value === 15 || value === 'main') && (backgroundColor = 'main');
+            (value === 18 || value === 'main-deep') && (backgroundColor = 'main-deep');
 
-            (value === 20 || value === 'accent-pale') && (backgroundColor = 'accent-pale');
-            (value === 21 || value === 'accent') && (backgroundColor = 'accent');
-            (value === 22 || value === 'accent-deep') && (backgroundColor = 'accent-deep');
+            (value === 22 || value === 'accent-pale') && (backgroundColor = 'accent-pale');
+            (value === 25 || value === 'accent') && (backgroundColor = 'accent');
+            (value === 28 || value === 'accent-deep') && (backgroundColor = 'accent-deep');
 
             (value === 30 || value === 'highlight-pale') && (backgroundColor = 'highlight-pale');
             (value === 31 || value === 'highlight') && (backgroundColor = 'highlight');

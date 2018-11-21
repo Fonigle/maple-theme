@@ -13,9 +13,6 @@
 
 // ====================================================================
 
-
-// $colors:main accent;
-
 $divide-positions: all top right bottom left;
 $divide-styles: solid dashed dotted;
 $levels: 1 2 3 4 5;
@@ -27,9 +24,9 @@ $levels: 1 2 3 4 5;
     .mp-#{$brightness} {
 
         // static colors
-        @for $i-color from 1 through length($colors-static) {
+        @for $i-color-static from 1 through length($colors-static) {
 
-            $color-type-static: nth($list:$colors-static, $n:$i-color);
+            $color-type-static: nth($list:$colors-static, $n:$i-color-static);
 
             .mp-theme-color-#{$color-type-static} {
                 color: calcColor($color-type-static, $brightness);
@@ -55,8 +52,8 @@ $levels: 1 2 3 4 5;
             $themepack: nth($list:map-keys($mp-themepacks), $n:$i-themepack);
 
             &.mp-theme-#{$themepack} {
-                @for $i-color from 1 through length($colors-themepack) {
-                    $color-type-themepack: nth($list:$colors-themepack, $n:$i-color);
+                @for $i-color-themepack from 1 through length($colors-themepack) {
+                    $color-type-themepack: nth($list:$colors-themepack, $n:$i-color-themepack);
                     $color-now: calcColor($color-type-themepack, $brightness, $themepack);
 
                     .mp-theme-color-#{$color-type-themepack} {
@@ -79,6 +76,31 @@ $levels: 1 2 3 4 5;
             }
         }
 
-        //static background-colors
+        // static background-colors
+
+        @for $i-background-static from 1 through length($backgrounds-static) {
+
+            $background-type-static: nth($list:$backgrounds-static, $n:$i-background-static);
+
+            .mp-theme-background-#{$background-type-static} {
+                color: calcBackground($background-type-static, $brightness);
+            }
+        }
+
+        @for $i-themepack from 1 through length(map-keys($mp-themepacks)) {
+            $themepack: nth($list:map-keys($mp-themepacks), $n:$i-themepack);
+
+            &.mp-theme-#{$themepack} {
+                @for $i-background-themepack from 1 through length($backgrounds-themepack) {
+                    $background-type-themepack: nth($list:$colors-themepack, $n:$i-background-themepack);
+                    $background-now: calcColor($background-type-themepack, $brightness, $themepack);
+
+                    .mp-theme-background-#{$background-type-themepack} {
+                        background-color: $background-now;
+                    }
+
+                }
+            }
+        }
     }
 }

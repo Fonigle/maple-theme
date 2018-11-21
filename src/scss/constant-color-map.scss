@@ -18,6 +18,34 @@ secondary: rgba(#fff, .7),
 thirdly:rgba(#fff, .3),
 success:darken($success, $darken-ratio),
 warning:darken($warning, $darken-ratio),
-error:darken($error, $darken-ratio),
+error:darken($error, $darken-ratio)
 /**/
-)
+);
+
+
+$const-background-light:(
+/**/
+panel:#eee,
+component:#fff,
+success:$success,
+warning:$warning,
+error:$error,
+highlight:rgba(#000, 0.12),
+highlight-pale:rgba(#000, 0.08),
+cloak:rgba(#000, 0.5),
+/**/
+);
+
+
+$const-background-dark:(
+/**/
+panel:#303030,
+component:#424242,
+success:darken($success, $darken-ratio),
+warning:darken($warning, $darken-ratio),
+error:darken($error, $darken-ratio),
+highlight:rgba(#fff, 0.12),
+highlight-pale:rgba(#fff, 0.08),
+cloak:rgba(#fff, 0.5),
+/**/
+);
