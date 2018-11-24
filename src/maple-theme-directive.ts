@@ -15,9 +15,9 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
             (value === 2 || value === 'secondary') && (color = 'secondary');
             (value === 3 || value === 'thirdly') && (color = 'thirdly');
 
-            (value === 10 || value === 'main-pale') && (color = 'main-pale');
-            (value === 11 || value === 'main') && (color = 'main');
-            (value === 12 || value === 'main-deep') && (color = 'main-deep');
+            (value === 12 || value === 'main-pale') && (color = 'main-pale');
+            (value === 15 || value === 'main') && (color = 'main');
+            (value === 18 || value === 'main-deep') && (color = 'main-deep');
 
             (value === 20 || value === 'accent-pale') && (color = 'accent-pale');
             (value === 21 || value === 'accent') && (color = 'accent');

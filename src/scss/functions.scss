@@ -4,7 +4,8 @@
     $main: map-get($map:$themepack-colors, $key:'main');
     $accent: map-get($map:$themepack-colors, $key:'accent');
 
-    $pale-ratio: 13.72549%;
+    //$pale-ratio: 13.72549%;
+    $pale-ratio: 22.94117%;
     $deep-ratio: 12.35294%;
 
     @if($brightness=='light') {

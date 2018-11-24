@@ -1,13 +1,13 @@
 <template>
     <div class="app">
         <div class="test-area"
-             v-theme:color="0"
-             v-theme:background="12"
-             v-theme:shadow>
+             v-theme:shadow
+             v-theme:background="18">
             <ul>
                 <li v-for="i in 6"
                     :key="i"
-                    v-theme:border>{{i}}</li>
+                    v-theme:color=""
+                    v-theme:color.hover="400">{{i}}</li>
             </ul>
         </div>
     </div>

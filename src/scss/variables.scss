@@ -1,9 +1,9 @@
 $mp-themepacks-custom:() !default;
 $darken-ratio:10% !default;
 
-$success:#8bc34a;
-$warning:#ffC107;
-$error:#f44336;
+$success:#8bc34a !default;
+$warning:#ffC107 !default;
+$error:#f44336 !default;
 
 $mp-themepacks-default:(default:(main:#2196f3, accent:#ff9100));
 $mp-themepacks: map-merge($mp-themepacks-default, $mp-themepacks-custom);
