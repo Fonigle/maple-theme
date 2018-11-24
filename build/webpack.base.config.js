@@ -104,20 +104,7 @@ module.exports = {
                     priority: -20,
                     reuseExistingChunk: true
                 },
-                // vendors: {
-                //     name: "vendors/library",
-                //     test: /[\\/]node_modules[\\/]/,
-                //     priority: -10
-                // },
-                // "vendors/vue-bucket": {
-                //     name: "vendors/vue-bucket",
-                //     test: /[\\/]node_modules[\\/]vue/,
-                //     priority: -9
-                // }
             }
-        },
-        runtimeChunk: {
-            name: "vendors/manifest"
         }
     },
     performance: {

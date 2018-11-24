@@ -7,13 +7,8 @@
 @import './scss/variables.scss';
 @import './scss/constant-type-list.scss';
 @import './scss/constant-color-map.scss';
-
 @import './scss/functions.scss';
 
-
-// ====================================================================
-$levels: 1 2 3 4 5;
-// =====================================================================
 
 @for $i-brightness from 1 through length($brightnesses) {
     $brightness: nth($list:$brightnesses, $n:$i-brightness);

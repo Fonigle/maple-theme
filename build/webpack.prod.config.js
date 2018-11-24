@@ -12,7 +12,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = merge(baseCfg, {
     mode: 'production',
     entry: {
-        index: [path.resolve("src/main.ts")]
+        'maple-theme': [path.resolve("src/main.ts")]
     },
     output: {
         path: path.resolve('dist'),
@@ -27,6 +27,7 @@ module.exports = merge(baseCfg, {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
+
     ],
     externals: {
         vue: 'vue'
