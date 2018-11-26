@@ -17,7 +17,7 @@ declare module 'vue/types/vue' {
 const MapleThemePluigin: PluginObject<any> = {
     install(Vue) {
         Vue.prototype.$theme = {
-            brigthness: (brigthness: 'dark' | 'light' | 'toggle') => {
+            brightness: (brigthness: 'dark' | 'light' | 'toggle') => {
                 switch (brigthness) {
                     case 'dark': {
                         document.body.classList.replace('mp-light', 'mp-dark');
