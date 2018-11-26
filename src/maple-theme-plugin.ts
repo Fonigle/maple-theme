@@ -9,7 +9,7 @@ declare module 'vue/types/vue' {
          */
         $theme: {
             brigthness: (brigthness: 'dark' | 'light' | 'toggle') => void;
-            color: (color: string) => void;
+            themepack: (themepack: string) => void;
         };
     }
 }
@@ -40,8 +40,8 @@ const MapleThemePluigin: PluginObject<any> = {
                         break;
                 }
             },
-            color: (color: string) => {
-                if (color) {
+            themepack: (themepack: string) => {
+                if (themepack) {
                     const mpThemeColors: string[] = [];
                     document.body.classList.forEach(item => {
                         if (/^mp-theme-/.test(item)) {
@@ -50,11 +50,11 @@ const MapleThemePluigin: PluginObject<any> = {
                     });
 
                     document.body.classList.remove(...mpThemeColors);
-                    document.body.classList.add(`mp-theme-${color}`);
+                    document.body.classList.add(`mp-theme-${themepack}`);
                 }
-            }
+            },
         };
-    }
+    },
 };
 
 export default MapleThemePluigin;

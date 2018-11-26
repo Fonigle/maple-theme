@@ -6,16 +6,16 @@ import ThemePlugin from './maple-theme-plugin';
 
 declare class mapleThemeConfig {
     brightness: 'light' | 'dark';
-    color: string;
+    themepack: string;
 }
 
 const mapleTheme: PluginObject<mapleThemeConfig> = {
     install(Vue, config) {
         const brightness = (config && config!.brightness) || 'light';
-        const color = (config && config!.color) || 'default';
+        const themepack = (config && config!.themepack) || 'default';
 
         document.body.classList.add(`mp-${brightness}`);
-        document.body.classList.add(`mp-theme-${color}`);
+        document.body.classList.add(`mp-theme-${themepack}`);
 
         Vue.directive('theme', ThemeDirective);
         Vue.use(ThemePlugin);
