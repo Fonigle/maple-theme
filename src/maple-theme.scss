@@ -15,6 +15,8 @@
 
     .mp-#{$brightness} {
 
+        background-color: map-get($map: $body-backgrounds, $key:$brightness);
+
         // static colors
         @for $i-color-static from 1 through length($colors-static) {
 
