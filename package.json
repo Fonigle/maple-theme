@@ -1,6 +1,6 @@
 {
     "name": "maple-theme",
-    "version": "2.0.1",
+    "version": "2.0.4",
     "description": "Theme Directive for Vue",
     "main": "dist/maple-theme",
     "types": "types/index.d.ts",
@@ -10,9 +10,9 @@
         "dist": "cross-env MODE='production' webpack --config build/webpack.prod.config.js --progress --hide-modules"
     },
     "files": [
-        "src/*.js",
-        "dist/*.js",
-        "types/*.d.ts"
+        "src",
+        "dist",
+        "types"
     ],
     "repository": {
         "type": "git",
