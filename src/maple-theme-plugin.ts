@@ -1,19 +1,5 @@
 import { PluginObject } from 'vue';
 
-declare module 'vue/types/vue' {
-    interface Vue {
-        /**
-         * 初始化权限
-         *
-         * @memberof Vue
-         */
-        $theme: {
-            brigthness: (brigthness: 'dark' | 'light' | 'toggle') => void;
-            themepack: (themepack: string) => void;
-        };
-    }
-}
-
 const MapleThemePluigin: PluginObject<any> = {
     install(Vue) {
         Vue.prototype.$theme = {

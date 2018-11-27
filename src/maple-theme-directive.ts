@@ -1,6 +1,6 @@
 import { DirectiveFunction } from 'vue';
 
-const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
+const MapleThemeDirective: DirectiveFunction = (el, binding, vnode, oldnode) => {
     const arg = binding.arg;
     const value = binding.value;
     const modifiers = binding.modifiers;
@@ -120,4 +120,4 @@ const theme: DirectiveFunction = (el, binding, vnode, oldnode) => {
     }
 };
 
-export default theme;
+export default MapleThemeDirective;

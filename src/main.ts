@@ -1,15 +1,15 @@
 import './maple-theme.scss';
 
 import { PluginObject } from 'vue';
-import ThemeDirective from './maple-theme-directive';
-import ThemePlugin from './maple-theme-plugin';
+import MapleThemeDirective from './maple-theme-directive';
+import MapleThemePlugin from './maple-theme-plugin';
 
-declare class mapleThemeConfig {
-    brightness: 'light' | 'dark';
-    themepack: string;
+class MapleThemeOptions {
+    brightness!: 'light' | 'dark';
+    themepack!: string;
 }
 
-const mapleTheme: PluginObject<mapleThemeConfig> = {
+const MapleTheme: PluginObject<MapleThemeOptions> = {
     install(Vue, config) {
         const brightness = (config && config!.brightness) || 'light';
         const themepack = (config && config!.themepack) || 'default';
@@ -17,9 +17,9 @@ const mapleTheme: PluginObject<mapleThemeConfig> = {
         document.body.classList.add(`mp-${brightness}`);
         document.body.classList.add(`mp-theme-${themepack}`);
 
-        Vue.directive('theme', ThemeDirective);
-        Vue.use(ThemePlugin);
+        Vue.directive('theme', MapleThemeDirective);
+        Vue.use(MapleThemePlugin);
     },
 };
 
-export default mapleTheme;
+export default MapleTheme;

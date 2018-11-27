@@ -1,6 +1,6 @@
 {
     "compileOnSave": false,
-    "include": ["@declaration", "demo", "src"],
+    "include": ["@declaration", "demo", "src", "types"],
     "exclude": ["node_modules"],
     "compilerOptions": {
         "target": "es5",

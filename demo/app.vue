@@ -18,7 +18,7 @@
     @Component
     export default class MyComponent extends Vue {
         handleToggleBtnClick() {
-            this.$theme.color('1');
+
         }
     }
 </script>
