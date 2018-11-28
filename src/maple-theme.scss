@@ -1,0 +1,173 @@
+/*!
+ * maple-theme.scss
+ * Author: Fonigle <www.fonigle.com>
+ * Date: 2018/11/20
+ * HomePage: theme.maple-ui.com
+ */
+@import './scss/variables.scss';
+@import './scss/constant-type-list.scss';
+@import './scss/constant-color-map.scss';
+@import './scss/functions.scss';
+
+
+@for $i-brightness from 1 through length($brightnesses) {
+    $brightness: nth($list:$brightnesses, $n:$i-brightness);
+
+    .mp-#{$brightness} {
+
+        background-color: map-get($map: $body-backgrounds, $key:$brightness);
+
+        // static colors
+        @for $i-color-static from 1 through length($colors-static) {
+
+            $color-type-static: nth($list:$colors-static, $n:$i-color-static);
+
+            .mp-theme-color-#{$color-type-static} {
+                color: calcColor($color-type-static, $brightness);
+            }
+
+            .mp-theme-color-hover-#{$color-type-static} {
+                &:hover:not(.active) {
+                    color: calcColor($color-type-static, $brightness);
+                }
+            }
+
+            .mp-theme-color-active-#{$color-type-static} {
+                &.active {
+                    color: calcColor($color-type-static, $brightness);
+                }
+            }
+        }
+
+        // themepack colors
+        @for $i-themepack from 1 through length(map-keys($mp-themepacks)) {
+
+            //default or other custom
+            $themepack: nth($list:map-keys($mp-themepacks), $n:$i-themepack);
+
+            &.mp-theme-#{$themepack} {
+                @for $i-color-themepack from 1 through length($colors-themepack) {
+                    $color-type-themepack: nth($list:$colors-themepack, $n:$i-color-themepack);
+                    $color-now: calcColor($color-type-themepack, $brightness, $themepack);
+
+                    .mp-theme-color-#{$color-type-themepack} {
+                        color: $color-now;
+                    }
+
+                    .mp-theme-color-hover-#{$color-type-themepack} {
+                        &:hover:not(.active) {
+                            color: $color-now;
+                        }
+                    }
+
+                    .mp-theme-color-active-#{$color-type-themepack} {
+                        &.active {
+                            color: $color-now;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        // static background-colors
+        @for $i-background-static from 1 through length($backgrounds-static) {
+            $background-type-static: nth($list:$backgrounds-static, $n:$i-background-static);
+            $background-now: calcBackground($background-type-static, $brightness);
+
+            .mp-theme-background-#{$background-type-static} {
+                background-color: $background-now;
+            }
+
+            .mp-theme-background-hover-#{$background-type-static} {
+                &:hover:not(.active) {
+                    background-color: $background-now;
+                }
+            }
+
+            .mp-theme-background-active-#{$background-type-static} {
+                &.active {
+                    background-color: $background-now;
+                }
+            }
+        }
+
+        // themepack background-colors
+        @for $i-themepack from 1 through length(map-keys($mp-themepacks)) {
+            $themepack: nth($list:map-keys($mp-themepacks), $n:$i-themepack);
+
+            &.mp-theme-#{$themepack} {
+                @for $i-background-themepack from 1 through length($backgrounds-themepack) {
+                    $background-type-themepack: nth($list:$colors-themepack, $n:$i-background-themepack);
+                    $background-now: calcBackground($background-type-themepack, $brightness, $themepack);
+
+                    .mp-theme-background-#{$background-type-themepack} {
+                        background-color: $background-now;
+                    }
+
+                    .mp-theme-background-hover-#{$background-type-themepack} {
+                        &:hover:not(.active) {
+                            background-color: $background-now;
+                        }
+                    }
+
+                    .mp-theme-background-active-#{$background-type-themepack} {
+                        &.active {
+                            background-color: $background-now;
+                        }
+                    }
+                }
+            }
+        }
+
+        //border
+        @for $i-border-position from 1 through length($border-positions) {
+            $position: nth($border-positions, $i-border-position);
+
+            @for $i-border-style from 1 through length($border-styles) {
+                $style: nth($border-styles, $i-border-style);
+                $border-color-type: default;
+
+                .mp-theme-border-#{$border-color-type}-#{$position}-#{$style} {
+
+                    @if($position=='all') {
+                        border-width: 1px;
+                        border-style: $style;
+                        border-color: calcBorderColor($border-color-type, $brightness)
+                    }
+
+                    @else {
+                        border-#{$position}-width: 1px;
+                        border-#{$position}-style: $style;
+                        border-#{$position}-color: calcBorderColor($border-color-type, $brightness);
+                    }
+                }
+
+                .mp-theme-border-#{$border-color-type}-#{$position}-#{$style}-not-last {
+                    &:not(:last-child) {
+                        @if($position=='all') {
+                            border-width: 1px;
+                            border-style: $style;
+                            border-color: calcBorderColor($border-color-type, $brightness)
+                        }
+
+                        @else {
+                            border-#{$position}-width: 1px;
+                            border-#{$position}-style: $style;
+                            border-#{$position}-color: calcBorderColor($border-color-type, $brightness);
+                        }
+                    }
+                }
+            }
+        }
+
+        // shadow
+        @for $i-shadow-level from 1 through length($shadow-levels) {
+            $shadow-level: nth($shadow-levels, $i-shadow-level);
+
+            .mp-theme-shadow-#{$shadow-level} {
+                box-shadow: calcShadow($shadow-level, $brightness);
+            }
+        }
+    }
+}

@@ -1,2 +1,2 @@
 # maple-theme
-Theme Directive for Vue
+Theme Directive for Vue.

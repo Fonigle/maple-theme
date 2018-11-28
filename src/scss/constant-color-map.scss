@@ -1,0 +1,91 @@
+$body-backgrounds:(
+/**/
+light:#E0E0E0,
+dark:#1E1E1E
+/**/
+);
+
+
+$const-color-light:(
+/**/
+whiteness: #fff,
+primary: rgba(#000, .87),
+secondary: rgba(#000, .54),
+thirdly:rgba(#000, .38),
+success:$success,
+warning:$warning,
+error:$error
+/**/
+);
+
+$const-color-dark: (
+/**/
+whiteness: rgba(#fff, .95),
+primary:rgba(#fff, 1),
+secondary: rgba(#fff, .7),
+thirdly:rgba(#fff, .3),
+success:darken($success, $darken-ratio),
+warning:darken($warning, $darken-ratio),
+error:darken($error, $darken-ratio)
+/**/
+);
+
+
+$const-background-light:(
+/**/
+panel:#eee,
+component:#fff,
+success:$success,
+warning:$warning,
+error:$error,
+highlight:rgba(#000, 0.12),
+highlight-pale:rgba(#000, 0.08),
+cloak:rgba(#000, 0.5),
+/**/
+);
+
+
+$const-background-dark:(
+/**/
+panel:#303030,
+component:#424242,
+success:darken($success, $darken-ratio),
+warning:darken($warning, $darken-ratio),
+error:darken($error, $darken-ratio),
+highlight:rgba(#fff, 0.12),
+highlight-pale:rgba(#fff, 0.08),
+cloak:rgba(#fff, 0.5),
+/**/
+);
+
+$const-border-light: (
+/**/
+default: rgba(#000, 0.12),
+/**/
+);
+
+$const-border-dark: (
+/**/
+default: rgba(#fff, 0.12),
+/**/
+);
+
+$const-shadow-light:(
+/**/
+shadow-1: 0px 2px 2px rgba(#000, 0.22),
+shadow-2: 0px 2px 5px rgba(#000, 0.21),
+shadow-3: 0px 2px 8px rgba(#000, 0.20),
+shadow-4: 0px 2px 11px rgba(#000, 0.19),
+shadow-5: 0px 2px 14px rgba(#000, 0.18)
+/**/
+);
+
+$const-shadow-dark:(
+/**/
+shadow-1: 0px 2px 4px rgba(#000, 0.58),
+shadow-2: 0px 2px 7px rgba(#000, 0.56),
+shadow-3: 0px 2px 10px rgba(#000, 0.54),
+shadow-4: 0px 2px 13px rgba(#000, 0.52),
+shadow-5: 0px 2px 16px rgba(#000, 0.5)
+/**/
+);

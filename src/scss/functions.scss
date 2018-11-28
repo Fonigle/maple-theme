@@ -1,0 +1,90 @@
+@function calcThemepackColorsMap($brightness, $themepack) {
+    $themepack-colors: map-get($map:$mp-themepacks, $key:$themepack);
+
+    $main: map-get($map:$themepack-colors, $key:'main');
+    $accent: map-get($map:$themepack-colors, $key:'accent');
+
+    //$pale-ratio: 13.72549%;
+    $pale-ratio: 22.94117%;
+    $deep-ratio: 12.35294%;
+
+    @if($brightness=='light') {
+        @return (main: $main,
+            main-pale: lighten($color:$main, $amount:$pale-ratio),
+            main-deep: darken($color:$main, $amount:$deep-ratio),
+            accent: $accent,
+            accent-pale: lighten($color:$accent, $amount:$pale-ratio),
+            accent-deep: darken($color:$accent, $amount:$deep-ratio),
+            );
+    }
+
+    @else if ($brightness=='dark') {
+        @return (main: darken($color:$main, $amount:$darken-ratio),
+            main-pale: lighten($color:$main, $amount:$pale-ratio - $darken-ratio),
+            main-deep: darken($color:$main, $amount:$deep-ratio + $darken-ratio),
+            accent: darken($color:$accent, $amount:$darken-ratio),
+            accent-pale: lighten($color:$accent, $amount:$pale-ratio - $darken-ratio),
+            accent-deep: darken($color:$accent, $amount:$deep-ratio + $darken-ratio),
+            );
+    }
+}
+
+@function calcColor($color-type, $brightness, $themepack:'') {
+
+    @if(index($colors-static, $color-type) !=null) {
+
+        @if($brightness=='light') {
+            @return map-get($map: $const-color-light, $key: $color-type);
+        }
+
+        @else if($brightness=='dark') {
+            @return map-get($map: $const-color-dark, $key: $color-type);
+        }
+    }
+
+    @else {
+        $themepack-colors-map: calcThemepackColorsMap($brightness, $themepack);
+        @return map-get($map: $themepack-colors-map, $key: $color-type);
+
+    }
+}
+
+@function calcBackground($background-type, $brightness, $themepack:'') {
+
+    @if(index($backgrounds-static, $background-type) !=null) {
+
+        @if($brightness=='light') {
+            @return map-get($map: $const-background-light, $key: $background-type);
+        }
+
+        @else if($brightness=='dark') {
+            @return map-get($map: $const-background-dark, $key: $background-type);
+        }
+    }
+
+    @else {
+        $themepack-colors-map: calcThemepackColorsMap($brightness, $themepack);
+        @return map-get($map: $themepack-colors-map, $key: $background-type);
+    }
+}
+
+@function calcBorderColor($border-color-type, $brightness, $themepack:'') {
+    @if($brightness=='light') {
+        @return map-get($map: $const-border-light, $key: $border-color-type);
+    }
+
+    @else if($brightness=='dark') {
+        @return map-get($map: $const-border-dark, $key: $border-color-type);
+    }
+}
+
+@function calcShadow($shadow-level, $brightness) {
+    @if($brightness=='light') {
+        @return map-get($map: $const-shadow-light, $key: shadow-#{$shadow-level});
+
+    }
+
+    @else if($brightness=='dark') {
+        @return map-get($map: $const-shadow-dark, $key: shadow-#{$shadow-level});
+    }
+}
