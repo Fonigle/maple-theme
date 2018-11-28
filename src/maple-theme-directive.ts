@@ -19,9 +19,9 @@ const MapleThemeDirective: DirectiveFunction = (el, binding, vnode, oldnode) => 
             (value === 15 || value === 'main') && (color = 'main');
             (value === 18 || value === 'main-deep') && (color = 'main-deep');
 
-            (value === 20 || value === 'accent-pale') && (color = 'accent-pale');
-            (value === 21 || value === 'accent') && (color = 'accent');
-            (value === 22 || value === 'accent-deep') && (color = 'accent-deep');
+            (value === 22 || value === 'accent-pale') && (color = 'accent-pale');
+            (value === 25 || value === 'accent') && (color = 'accent');
+            (value === 28 || value === 'accent-deep') && (color = 'accent-deep');
 
             (value === 200 || value === 'success') && (color = 'success');
             (value === 300 || value === 'warning') && (color = 'warning');
