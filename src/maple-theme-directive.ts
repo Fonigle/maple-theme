@@ -50,10 +50,10 @@ const MapleThemeDirective: DirectiveFunction = (el, binding, vnode, oldnode) => 
             (value === 25 || value === 'accent') && (backgroundColor = 'accent');
             (value === 28 || value === 'accent-deep') && (backgroundColor = 'accent-deep');
 
-            (value === 30 || value === 'highlight-pale') && (backgroundColor = 'highlight-pale');
-            (value === 31 || value === 'highlight') && (backgroundColor = 'highlight');
+            (value === 32 || value === 'highlight-pale') && (backgroundColor = 'highlight-pale');
+            (value === 35 || value === 'highlight') && (backgroundColor = 'highlight');
 
-            (value === 40 || value === 'cloak') && (backgroundColor = 'cloak');
+            (value === 45 || value === 'cloak') && (backgroundColor = 'cloak');
 
             (value === 200 || value === 'success') && (backgroundColor = 'success');
             (value === 300 || value === 'warning') && (backgroundColor = 'warning');
