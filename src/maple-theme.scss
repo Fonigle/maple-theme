@@ -168,6 +168,35 @@
             .mp-theme-shadow-#{$shadow-level} {
                 box-shadow: calcShadow($shadow-level, $brightness);
             }
+
+            .mp-theme-shadow-hover-#{$shadow-level} {
+                &:hover:not(.active) {
+                    box-shadow: calcShadow($shadow-level, $brightness);
+
+                }
+            }
+
+            .mp-theme-shadow-active-#{$shadow-level} {
+                &.active {
+                    box-shadow: calcShadow($shadow-level, $brightness);
+                }
+            }
+
+            .mp-theme-shadow-#{$shadow-level}-filter {
+                filter: drop-shadow(calcShadow($shadow-level, $brightness));
+            }
+
+            .mp-theme-shadow-hover-#{$shadow-level}-filter {
+                &:hover:not(.active) {
+                    filter: drop-shadow(calcShadow($shadow-level, $brightness));
+                }
+            }
+
+            .mp-theme-shadow-active-#{$shadow-level}-filter {
+                &.active {
+                    filter: drop-shadow(calcShadow($shadow-level, $brightness));
+                }
+            }
         }
     }
 }
