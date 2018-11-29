@@ -1,6 +1,6 @@
 # maple-theme
 
-> Theme Directive for Vue.
+> vue directive for quick style setting.
 
 [![npm](https://img.shields.io/npm/v/maple-theme.svg?logo=npm)](https://www.npmjs.com/package/maple-theme) [![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/maple-theme.svg)](https://www.npmjs.com/package/maple-theme) [![GitHub](https://img.shields.io/github/license/Fonigle/maple-theme.svg)](https://github.com/Fonigle/maple-theme)
 
@@ -12,7 +12,7 @@
 
 ## HomePage
 
-[MapleTheme](http://theme.maple-ui.com)
+[theme.maple-ui.com](http://theme.maple-ui.com)
 
 ## Useage
 
