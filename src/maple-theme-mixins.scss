@@ -1,0 +1,134 @@
+$color-mixin-map:(
+/**/
+0:"whiteness",
+1:"primary",
+2:"secondary",
+3:"thirdly",
+12:"main-pale",
+15:"main",
+18:"main-deep",
+22:"accent-pale",
+25:"accent",
+28:"accent-deep",
+200:"success",
+300:"warning",
+400:"error"
+/**/
+);
+
+@mixin mp-theme-color($color:1) {
+    @for $i-color-mixin from 1 through length(map-keys($color-mixin-map)) {
+        $color-mixin-key: nth($list:map-keys($color-mixin-map), $n:$i-color-mixin);
+        $color-mixin-value: map-get($map:$color-mixin-map, $key:$color-mixin-key);
+
+        @if($color==$color-mixin-key) {
+            @extend .mp-theme-color-#{$color-mixin-value};
+        }
+    }
+}
+
+@mixin mp-theme-color-hover($color:1) {
+    @for $i-color-mixin from 1 through length(map-keys($color-mixin-map)) {
+        $color-mixin-key: nth($list:map-keys($color-mixin-map), $n:$i-color-mixin);
+        $color-mixin-value: map-get($map:$color-mixin-map, $key:$color-mixin-key);
+
+        @if($color==$color-mixin-key) {
+            @extend .mp-theme-color-hover-#{$color-mixin-value};
+        }
+    }
+}
+
+@mixin mp-theme-color-active($color:1) {
+    @for $i-color-mixin from 1 through length(map-keys($color-mixin-map)) {
+        $color-mixin-key: nth($list:map-keys($color-mixin-map), $n:$i-color-mixin);
+        $color-mixin-value: map-get($map:$color-mixin-map, $key:$color-mixin-key);
+
+        @if($color==$color-mixin-key) {
+            @extend .mp-theme-color-active-#{$color-mixin-value};
+        }
+    }
+}
+
+
+$background-mixin-map:(
+/**/
+0:"panel",
+1:"component",
+12:"main-pale",
+15:"main",
+18:"main-deep",
+22:"accent-pale",
+25:"accent",
+28:"accent-deep",
+32:"highlight-pale",
+35:"highlight",
+45:"cloak",
+200:"success",
+300:"warning",
+400:"error"
+/**/
+);
+
+@mixin mp-theme-background($background:1) {
+    @for $i-background-mixin from 1 through length(map-keys($background-mixin-map)) {
+        $background-mixin-key: nth($list:map-keys($background-mixin-map), $n:$i-background-mixin);
+        $background-mixin-value: map-get($map:$background-mixin-map, $key:$background-mixin-key);
+
+        @if($background==$background-mixin-key) {
+            @extend .mp-theme-background-#{$background-mixin-value};
+        }
+    }
+}
+
+@mixin mp-theme-background-hover($background:1) {
+    @for $i-background-mixin from 1 through length(map-keys($background-mixin-map)) {
+        $background-mixin-key: nth($list:map-keys($background-mixin-map), $n:$i-background-mixin);
+        $background-mixin-value: map-get($map:$background-mixin-map, $key:$background-mixin-key);
+
+        @if($background==$background-mixin-key) {
+            @extend .mp-theme-background-hover-#{$background-mixin-value};
+        }
+    }
+}
+
+@mixin mp-theme-background-active($background:1) {
+    @for $i-background-mixin from 1 through length(map-keys($background-mixin-map)) {
+        $background-mixin-key: nth($list:map-keys($background-mixin-map), $n:$i-background-mixin);
+        $background-mixin-value: map-get($map:$background-mixin-map, $key:$background-mixin-key);
+
+        @if($background==$background-mixin-key) {
+            @extend .mp-theme-background-active-#{$background-mixin-value};
+        }
+    }
+}
+
+
+@mixin mp-theme-shadow($level:1, $filter:'') {
+    @if($filter=='filter') {
+        @extend .mp-theme-shadow-#{$level}-filter;
+    }
+
+    @else {
+        @extend .mp-theme-shadow-#{$level};
+    }
+}
+
+@mixin mp-theme-shadow-hover($level:1, $filter:'') {
+    @if($filter=='filter') {
+        @extend .mp-theme-shadow-hover-#{$level}-filter;
+    }
+
+    @else {
+        @extend .mp-theme-shadow-hover-#{$level};
+    }
+}
+
+@mixin mp-theme-shadow-active($level:1, $filter:'') {
+    @if($filter=='filter') {
+        @extend .mp-theme-shadow-active-#{$level}-filter;
+    }
+
+    @else {
+        @extend .mp-theme-shadow-active-#{$level};
+    }
+}
