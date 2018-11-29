@@ -1,6 +1,6 @@
 {
     "name": "maple-theme",
-    "version": "2.0.7",
+    "version": "2.1.0",
     "description": "Theme Directive for Vue",
     "main": "dist/maple-theme",
     "types": "types/index.d.ts",
