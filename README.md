@@ -44,7 +44,7 @@ app.vue:
 </temlate>
 ```
 
-For more information , See [Guide](http://theme.maple-ui.com/guide).
+For more information , See [Guide](http://theme.maple-ui.com/#/guide).
 
 
 ## LICENSE
