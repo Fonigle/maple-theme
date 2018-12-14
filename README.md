@@ -8,7 +8,7 @@
 
 -   vue directive `v-theme` instead of css for colors, backgrounds, borders or box-shadow.
 -   theme or brightness switch by on function.
--   corresponding scss mixins for flexible using.
+-   scss mixins for flexible using.
 
 ## HomePage
 
